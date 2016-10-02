@@ -1,27 +1,33 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import Comments from './CommentsList'
 import { articles } from './fixtures'
+=======
+import CommentList from './CommentList'
+>>>>>>> upstream/master
 
 export default class Article extends Component {
 
     state = {
-        isOpen: false,
         opened: {
             a: true
         }
     }
 
     render() {
-        const { article } = this.props
-        const { isOpen } = this.state
+        const { article, isOpen, openArticle } = this.props
 
+<<<<<<< HEAD
         const body = isOpen ? <section>{article.text}
             <Comments comments = {article.comments} />
         </section> : null
+=======
+        const body = isOpen ? <section>{article.text}<CommentList comments = {article.comments}/></section> : null
+>>>>>>> upstream/master
 
         return (
             <div>
-                <h3 onClick = {this.toggleOpen}>{article.title}</h3>
+                <h3 onClick = {openArticle}>{article.title}</h3>
                 {body}
             </div>
         )
