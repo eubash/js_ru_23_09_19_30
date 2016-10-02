@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CommentsList from './CommentsList'
+import Comments from './CommentsList'
 import { articles } from './fixtures'
 
 export default class Article extends Component {
@@ -16,7 +16,7 @@ export default class Article extends Component {
         const { isOpen } = this.state
 
         const body = isOpen ? <section>{article.text}
-            <CommentsList comments = {article.comments} />
+            <Comments comments = {article.comments} />
         </section> : null
 
         return (
