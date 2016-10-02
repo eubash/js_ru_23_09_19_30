@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-
-export default (props) => {
-    const { comment } = props
-
-    return (
-        <div>
-            <span>{comment.user}</span>
-            <p>{comment.text}</p>
-        </div>
-    )
-}
-=======
 import React, { PropTypes } from 'react'
 
 function Comment(props) {
@@ -32,4 +17,3 @@ Comment.propTypes = {
 }
 
 export default Comment
->>>>>>> upstream/master

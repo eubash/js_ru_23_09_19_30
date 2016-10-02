@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-import Comments from './CommentsList'
-import { articles } from './fixtures'
-=======
 import CommentList from './CommentList'
->>>>>>> upstream/master
 
 export default class Article extends Component {
 
@@ -17,13 +12,7 @@ export default class Article extends Component {
     render() {
         const { article, isOpen, openArticle } = this.props
 
-<<<<<<< HEAD
-        const body = isOpen ? <section>{article.text}
-            <Comments comments = {article.comments} />
-        </section> : null
-=======
         const body = isOpen ? <section>{article.text}<CommentList comments = {article.comments}/></section> : null
->>>>>>> upstream/master
 
         return (
             <div>
@@ -37,25 +26,23 @@ export default class Article extends Component {
         this.setState({
             isOpen: !this.state.isOpen
         })
-/*
-
-        this.setState({
-            opened: {...this.state.opened, a: false}
-        })
-*/
+        /*
+         this.setState({
+         opened: {...this.state.opened, a: false}
+         })
+         */
     }
 }
 
 
 
 /*
-export default (props) => {
-    const { article } = props
-
-    return (
-        <div>
-            <h3>{article.title}</h3>
-            <section>{article.text}</section>
-        </div>
-    )
-}*/
+ export default (props) => {
+ const { article } = props
+ return (
+ <div>
+ <h3>{article.title}</h3>
+ <section>{article.text}</section>
+ </div>
+ )
+ }*/
