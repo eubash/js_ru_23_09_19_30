@@ -1,12 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import CommentList from './CommentList'
 
 export default class Article extends Component {
 
-    state = {
-        opened: {
-            a: true
-        }
+    // ADD PropTypes
+
+    static propTypes = {
+        article: PropTypes.shape({
+            title: PropTypes.string,
+            text: PropTypes.string,
+            comments: PropTypes.array
+        }),
+        isOpen: PropTypes.bool,
+        openArticle: PropTypes.func
     }
 
     render() {
@@ -32,6 +38,7 @@ export default class Article extends Component {
          })
          */
     }
+
 }
 
 

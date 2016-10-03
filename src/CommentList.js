@@ -4,8 +4,12 @@ import toggleOpen from './decorators/toggleOpen'
 
 class CommentList extends Component {
 
+    // ADD PropTypes
+
     static propTypes = {
-        comments: PropTypes.array
+        comments: PropTypes.array,
+        isOpen: PropTypes.bool,
+        toggleOpen: PropTypes.func
     }
 
     componentWillMount() {
