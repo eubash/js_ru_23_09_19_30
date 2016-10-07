@@ -13,6 +13,7 @@ class AddCommentForm extends Component {
 
     handleChange = (field, ev) => {
         let nextState = {}
+        //да, но можно короче: this.setState({[field]: ev.target.value})
         nextState[field] = ev.target.value
         this.setState(nextState)
     }
