@@ -79,6 +79,7 @@ export default class RangeAdvanced extends Component {
             <div style={calendarStyle}>
                 { !from && !to && <p>Please select the <strong>first day</strong>.</p> }
                 { from && !to && <p>Please select the <strong>last day</strong>.</p> }
+                {/*Не пиши столько кода в JSX*/}
                 { from && to &&
                 <p>
                     You chose from { moment(from).format('L') } to { moment(to).format('L') }.
