@@ -28,5 +28,5 @@ class ArticleList extends Component {
 }
 
 export default connect(state => ({
-    articles: state.articles
+      articles: (state.filters.length > state.articles.length || !state.filters.length) ? state.articles : state.filters
 }))(accordion(ArticleList))

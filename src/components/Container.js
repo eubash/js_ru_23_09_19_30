@@ -13,7 +13,7 @@ class Container extends Component {
         return (
             <div>
                 <Counter />
-                <Filter articles={[]}/>
+                <Filter />
                 <ArticleList />
                 <Chart />
                 <NewArticleForm />
