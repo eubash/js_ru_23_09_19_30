@@ -28,5 +28,10 @@ class ArticleList extends Component {
 }
 
 export default connect(state => ({
-      articles: (state.filters.length > state.articles.length || !state.filters.length) ? state.articles : state.filters
+    articles: (!state.filters.length) ? state.articles : state.articles.filter(function (o) {
+                    return state.filters.some(function (i) {
+                        return i.value == o.id
+                    })
+                }
+        )
 }))(accordion(ArticleList))
