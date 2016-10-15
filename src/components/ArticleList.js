@@ -27,11 +27,6 @@ class ArticleList extends Component {
     }
 }
 
-<<<<<<< HEAD
-export default connect(state => ({
-    articles: (!state.filters.length) ? state.articles : state.articles.filter(o => state.filters.some(i => i.value == o.id))
-}))(accordion(ArticleList))
-=======
 export default connect(state => {
     const { articles, filters } = state
     const selected = filters.get('selected')
@@ -47,4 +42,3 @@ export default connect(state => {
         articles: filteredArticles
     }
 })(accordion(ArticleList))
->>>>>>> 72e95cefac4fc527ca21f8317af1b94f3126cf04
