@@ -6,6 +6,14 @@ import { changeDateRange } from '../AC/filters'
 import 'react-day-picker/lib/style.css';
 
 class DatePicker extends Component {
+<<<<<<< HEAD
+=======
+    //это тоже должно в сторе жить
+    state = {
+        from: null,
+        to: null
+    }
+>>>>>>> 136d23d50aa32c4a50e88001fa2ba18195c05a53
 
     handleDayClick = (e, day) => {
         const { changeDateRange, range } = this.props
@@ -29,6 +37,10 @@ class DatePicker extends Component {
 
 }
 
+<<<<<<< HEAD
 export default connect(state => ({
     range: state.filters.get('dateRange')
 }), { changeDateRange })(DatePicker)
+=======
+export default DatePicker
+>>>>>>> 136d23d50aa32c4a50e88001fa2ba18195c05a53

@@ -11,8 +11,12 @@ class SelectFilter extends Component {
     static propTypes = {
         articles: PropTypes.array.isRequired
     };
+<<<<<<< HEAD
 
 <<<<<<< HEAD
+=======
+    //это нужно брать из стора, иначе два источника правды будет, а это плохо
+>>>>>>> 136d23d50aa32c4a50e88001fa2ba18195c05a53
     state = {
         selected: null
     }
