@@ -8,8 +8,9 @@ export default store => next => action => {
             const comments = store.getState().comments
             const lastId = Math.max(...Object.keys(comments))  // get max id
 
-            const id = lastId + 1 // increment id
-            Object.assign(action, {payload: Object.assign(payload, { id })})
+            const id = lastId + 1;  //increment ID
+
+            ({...action, payload: Object.assign(payload, { id })})
     }
 
     next(action)
