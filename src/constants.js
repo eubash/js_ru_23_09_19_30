@@ -2,9 +2,7 @@ export const INCREMENT = 'INCREMENT'
 
 export const DELETE_ARTICLE = 'DELETE_ARTICLE'
 
-<<<<<<< HEAD
-export const FILTER_ARTICLES = 'FILTER_ARTICLES'
-=======
 export const CHANGE_DATE_RANGE = 'CHANGE_DATE_RANGE'
 export const CHANGE_SELECTION = 'CHANGE_SELECTION'
->>>>>>> 72e95cefac4fc527ca21f8317af1b94f3126cf04
+
+export const ADD_COMMENT = 'ADD_COMMENT'

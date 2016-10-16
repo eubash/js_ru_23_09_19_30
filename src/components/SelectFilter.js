@@ -4,26 +4,13 @@ import { connect } from 'react-redux'
 import { changeSelection } from '../AC/filters'
 
 import 'react-select/dist/react-select.css'
-import { filterArticles } from '../AC/filterArticles'
-import { connect } from 'react-redux'
 
 class SelectFilter extends Component {
     static propTypes = {
         articles: PropTypes.array.isRequired
     };
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-=======
-    //это нужно брать из стора, иначе два источника правды будет, а это плохо
->>>>>>> 136d23d50aa32c4a50e88001fa2ba18195c05a53
-    state = {
-        selected: null
-    }
-
-=======
     handleChange = selected => this.props.changeSelection(selected.map(option => option.value))
->>>>>>> 72e95cefac4fc527ca21f8317af1b94f3126cf04
 
     render() {
         const { articles, selected } = this.props
@@ -37,24 +24,11 @@ class SelectFilter extends Component {
             value={selected}
             multi={true}
             onChange={this.handleChange}
-        />
+            />
     }
-
-    handleChange = selected => {
-
-        this.setState({ selected })
-        this.props.filterArticles(selected)
-    }
-
 }
 
 export default connect(state => ({
-<<<<<<< HEAD
-    articles: state.articles
-}), { filterArticles })(SelectFilter)
-
-=======
     selected: state.filters.get('selected'),
     articles: Object.keys(state.articles).map(id => state.articles[id])
 }), { changeSelection })(SelectFilter)
->>>>>>> 72e95cefac4fc527ca21f8317af1b94f3126cf04
