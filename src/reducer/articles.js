@@ -7,8 +7,8 @@ export default (articles = arrayToMap(normalizedArticles), action) => {
 
     switch (type) {
         case DELETE_ARTICLE:
-            return Object.keys(articles)
-                .filter(key => key != payload.id)
+            let keys = Object.keys(articles).filter(key => key != payload.id) //delete article bugfix
+            return keys.reduce((x, key) => (x[key] = articles[key], x), {})
 
         case ADD_COMMENT:
             const { articleId, id } = payload
