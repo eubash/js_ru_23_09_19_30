@@ -5,7 +5,7 @@ import { Record } from 'immutable'
 
 const commentsRecord = Record({
     id : null,
-    user : "User",
+    user : "",
     text: ""
 })
 
@@ -14,10 +14,10 @@ export default (comments = arrayToRecordMap(normalizedComments, commentsRecord),
 
     switch (type) {
         case ADD_COMMENT:
-            const { id, user, text } = payload
-            return Object.assign({}, comments, {
-                [id]: { id, user, text }
-            })
+            const { id } = payload
+
+            const newComment = { [id] : new commentsRecord(payload) }
+            return {...comments, ...newComment }
     }
 
     return comments
