@@ -6,7 +6,7 @@ export default store => next => action => {
     switch (type) {
         case ADD_COMMENT:
             const comments = store.getState().comments
-            const lastId = Math.max(...Object.keys(comments))  // get max id
+            const lastId = Object.keys(comments).length
 
             const id = lastId + 1;  //increment ID
 

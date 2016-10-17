@@ -1,9 +1,13 @@
 import { normalizedArticles } from '../fixtures'
 import { DELETE_ARTICLE, ADD_COMMENT } from '../constants'
 import { arrayToMap } from '../store/helpers'
+import { Record } from 'immutable'
+
 
 export default (articles = arrayToMap(normalizedArticles), action) => {
     const { type, payload } = action
+
+    console.log(articles)
 
     switch (type) {
         case DELETE_ARTICLE:
