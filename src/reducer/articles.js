@@ -1,13 +1,19 @@
 import { normalizedArticles } from '../fixtures'
 import { DELETE_ARTICLE, ADD_COMMENT } from '../constants'
-import { arrayToMap } from '../store/helpers'
+import { arrayToRecordMap } from '../store/helpers'
 import { Record } from 'immutable'
 
+const articlesRecord = new Record({
+    id : null,
+    date : new Date().toString(),
+    title: "",
+    text: "",
+    comments: []
+})
 
-export default (articles = arrayToMap(normalizedArticles), action) => {
+
+export default (articles = arrayToRecordMap(normalizedArticles, articlesRecord), action) => {
     const { type, payload } = action
-
-    console.log(articles)
 
     switch (type) {
         case DELETE_ARTICLE:
@@ -15,12 +21,10 @@ export default (articles = arrayToMap(normalizedArticles), action) => {
             return keys.reduce((obj, key) => (obj[key] = articles[key], obj), {})
 
         case ADD_COMMENT:
-            const { articleId, id } = payload
-            const article = articles[articleId]
 
-            return Object.assign({}, articles, {
-                [articleId]: Object.assign({}, article, {comments: article.comments.concat(id)})
-            })
+            const { articleId, id } = payload
+
+            articles[articleId].set('comments', articles[articleId].get('comments').push(id))
     }
 
     return articles
