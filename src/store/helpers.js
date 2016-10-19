@@ -1,18 +1,15 @@
-//import store from './index'
+import { Map } from 'immutable'
 
 export function getRelation(entity, relation, storeState) {
     if (!entity[relation] || !storeState[relation]) return []
-    return entity[relation].map(id => storeState[relation][id])
+    return entity[relation].map(id => storeState[relation].getIn(['entities', id]))
 }
 
-//export function arrayToMap(arr) {
+export function arrayToMap(arr, mapper = (f) => f) {
+    return arr.reduce((acc, entity) => acc.set(entity.id, mapper(entity)), new Map({}))
+}
+
+//export function arrayToRecordMap(arr, recordEntity) {
 //    return arr.reduce((acc, entity) => (
-//        {...acc, [entity.id]: entity}
+//    {...acc, [entity.id]: new recordEntity(entity)}
 //    ), {})
-//}
-
-export function arrayToRecordMap(arr, recordEntity) {
-    return arr.reduce((acc, entity) => (
-    {...acc, [entity.id]: new recordEntity(entity)}
-    ), {})
-}
