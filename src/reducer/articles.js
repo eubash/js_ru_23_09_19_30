@@ -48,6 +48,7 @@ export default (articles = defaultState, action) => {
             return articles.setIn(['entities', payload.id], new ArticleModel(response))
 
         case LOAD_ALL_COMMENTS + START:
+            //все хорошо, но почему не camelCase
             return articles.setIn(['entities', payload.id, 'loading_comments'], true)
 
         case LOAD_ALL_COMMENTS + SUCCESS:
