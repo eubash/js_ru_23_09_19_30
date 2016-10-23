@@ -1,4 +1,4 @@
-import { ADD_COMMENT, LOAD_COMMENTS_FOR_ARTICLE, START, SUCCESS } from '../constants'
+import { ADD_COMMENT, LOAD_COMMENTS_FOR_ARTICLE, START, SUCCESS, LOAD_PAGINATION_COMMENTS } from '../constants'
 import $ from 'jquery'
 
 export function addComment(comment, articleId) {
@@ -18,6 +18,15 @@ export function loadCommentsForArticle(articleId) {
         callAPI: `/api/comment?article=${articleId}`
     }
 }
+
+export function loadPaginationComments(pageNum) {
+    return {
+        type: LOAD_PAGINATION_COMMENTS,
+        payload: { pageNum },
+        callAPI: `/api/comment?limit=5&offset=0`
+    }
+}
+
 
 /*
  export function loadCommentsForArticle(articleId) {

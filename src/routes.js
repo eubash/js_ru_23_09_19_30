@@ -4,6 +4,7 @@ import Container from './components/Container'
 import Counter from './components/Counter'
 import ArticleListPage from './routeHandlers/ArticleListPage'
 import Filters from './components/Filters'
+import CommentPaginationList from './routeHandlers/CommentPaginationList'
 import NewArticleForm from './components/NewArticleForm'
 import ArticlePage from './routeHandlers/ArticlePage'
 import NotFoundPage from './routeHandlers/NotFoundPage'
@@ -14,6 +15,9 @@ export default <Router history = {browserHistory}>
         <Route path = "articles" component = {ArticleListPage}>
             <Route path = "new" component = {NewArticleForm} />
             <Route path = ":id" component = {ArticlePage} />
+        </Route>
+        <Route path = "comments" component = {CommentPaginationList}>
+            <Route path = ":pageNum" component = {CommentPaginationList} />
         </Route>
         <Route path = "filters" component = {Filters} />
         <Route path = "*" component = {NotFoundPage} />
