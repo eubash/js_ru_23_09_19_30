@@ -10,7 +10,7 @@ class CommentsPaginationWrapper extends Component {
         return (
             <div>
                 <h1>Comments Pagination</h1>
-                <CommentPaginationList pageIndex = {this.props.params.pageIndex} limit = { 5 } />
+                <CommentPaginationList pageIndex = {this.props.params.pageIndex} />
             </div>
         )
     }

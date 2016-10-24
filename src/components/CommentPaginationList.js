@@ -47,7 +47,14 @@ class CommentPaginationList extends Component {
     }
 }
 
-export default connect((state, props, response) => ({
-    total: state.comments.get('total'),
-    comments: state.comments.get('entities').valueSeq().toArray() || []
-}), { loadPaginationComments })(CommentPaginationList)
+
+export default connect((state, {pageIndex}) => {
+
+    const filteredComments = state.comments.get('entities').filter((el, index) => index >= ((pageIndex * 5) - pageIndex) && index < (pageIndex * 5))
+
+    return {
+        total: state.comments.get('total'),
+        comments: filteredComments.valueSeq().toArray()
+    }
+
+}, { loadPaginationComments })(CommentPaginationList)
