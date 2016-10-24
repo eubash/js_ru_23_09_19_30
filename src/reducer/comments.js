@@ -18,7 +18,7 @@ export default (comments = defaultState, action) => {
 
     switch (type) {
         case LOAD_PAGINATION_COMMENTS + START:
-            return comments
+            return comments  //.set('loading', true)
 
         case LOAD_PAGINATION_COMMENTS + SUCCESS:
             return comments.update('entities', entities =>
