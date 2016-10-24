@@ -22,18 +22,26 @@ class CommentPaginationList extends Component {
         loadPaginationComments(nextProps.pageIndex)
     }
 
+    paginationMenu(total, step) {
+        let pages = []
+        for(let i = 0, j=1; i < total; i += step, j++) {
+            pages.push(j)
+        }
+        return pages.map(page => <Link key={ page } to={`/comments/${page}`} activeStyle = {{color: 'red'}}> { page } </Link>)
+    }
+
 
     render() {
-        const i = 1
-        const { comments } = this.props
+        const { comments, total } = this.props
+        const paginationMenu = this.paginationMenu(total, 5)
         const commentItems = comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)
 
         return (
             <div>
                 <ul>
+                    {paginationMenu}
                     {commentItems}
                 </ul>
-                <Link to={`/comments/${i}`} activeClassName = "active" activeStyle = {{color: 'red'}}>1</Link> <Link to={`/comments/${i + 1}`} activeClassName = "active" activeStyle = {{color: 'red'}}>2</Link> <Link to={`/comments/${i + 2}`} activeClassName = "active" activeStyle = {{color: 'red'}}>3</Link> <Link to={`/comments/${i + 3}`} activeClassName = "active" activeStyle = {{color: 'red'}}>4</Link>
             </div>
         )
     }
