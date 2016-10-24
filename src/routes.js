@@ -17,7 +17,7 @@ export default <Router history = {browserHistory}>
             <Route path = ":id" component = {ArticlePage} />
         </Route>
         <Route path = "comments" component = {CommentPaginationList}>
-            <Route path = ":pageNum" component = {CommentPaginationList} />
+            <Route path = ":pageIndex" component = {CommentPaginationList} />
         </Route>
         <Route path = "filters" component = {Filters} />
         <Route path = "*" component = {NotFoundPage} />

@@ -10,11 +10,21 @@ class CommentPaginationList extends Component {
     static propTypes = {};
 
     componentDidMount() {
-        const { loadPaginationComments, pageNum } = this.props
-        loadPaginationComments()
+        const { loadPaginationComments } = this.props
+        loadPaginationComments(this.props.params.pageIndex)
+
     }
 
+    componentWillUpdate(nextProps, nextState) {
+       // console.log('Component WILL UPDATE!');
+        if(this.props.params.pageIndex == nextProps.params.pageIndex) return
+        const { loadPaginationComments } = this.props
+        loadPaginationComments(nextProps.params.pageIndex)
+    }
+
+
     render() {
+        const i = 1
         const { comments } = this.props
         const commentItems = comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)
 
@@ -24,12 +34,13 @@ class CommentPaginationList extends Component {
                 <ul>
                     {commentItems}
                 </ul>
-                <Link to='/1' activeClassName = "active" activeStyle = {{color: 'red'}}>1</Link> <Link to="/2" activeClassName = "active" activeStyle = {{color: 'red'}}>2</Link> <Link to="/3" activeClassName = "active" activeStyle = {{color: 'red'}}>3</Link>
+                <Link to={`/comments/${i}`} activeClassName = "active" activeStyle = {{color: 'red'}}>1</Link> <Link to={`/comments/${i + 1}`} activeClassName = "active" activeStyle = {{color: 'red'}}>2</Link> <Link to={`/comments/${i + 2}`} activeClassName = "active" activeStyle = {{color: 'red'}}>3</Link>
             </div>
         )
     }
 }
 
 export default connect((state, props, response) => ({
-    comments: state.comments.get('entities').valueSeq().toArray()
+    total: state.comments.get('total'),
+    comments: state.comments.get('entities').valueSeq().toArray() || []
 }), { loadPaginationComments })(CommentPaginationList)

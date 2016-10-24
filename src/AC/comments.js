@@ -19,11 +19,13 @@ export function loadCommentsForArticle(articleId) {
     }
 }
 
-export function loadPaginationComments(pageNum) {
+export function loadPaginationComments(pageIndex) {
+
+    const index = pageIndex == null ? 0 : (pageIndex * 5) - 5
     return {
         type: LOAD_PAGINATION_COMMENTS,
-        payload: { pageNum },
-        callAPI: `/api/comment?limit=5&offset=0`
+        payload: { index },
+        callAPI: `/api/comment?limit=5&offset=${index}`
     }
 }
 
