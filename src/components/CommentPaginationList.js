@@ -14,11 +14,12 @@ class CommentPaginationList extends Component {
         loadPaginationComments(pageIndex)
 
     }
-
+    //лучше componentWillReceiveProps, тебя же не интересует state
     componentWillUpdate(nextProps, nextState) {
        // console.log('Component WILL UPDATE!');
         const { loadPaginationComments, pageIndex } = this.props
         if(pageIndex == nextProps.pageIndex) return
+        //а если они уже загружены?
         loadPaginationComments(nextProps.pageIndex)
     }
 
@@ -49,7 +50,7 @@ class CommentPaginationList extends Component {
 
 
 export default connect((state, {pageIndex}) => {
-
+    //нет никакой гарантии, что на сервере и клиенте они будут в одинаковом порядке. лучше явно хранить для какой страницы какие комменты
     const filteredComments = state.comments.get('entities').filter((el, index) => index >= ((pageIndex * 5) - pageIndex) && index < (pageIndex * 5))
 
     return {
